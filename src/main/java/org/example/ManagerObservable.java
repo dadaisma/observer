@@ -3,7 +3,7 @@ package org.example;
 import java.util.HashSet;
 import java.util.Set;
 
-public class EjemploObservable implements Observable {
+public class ManagerObservable implements Observable {
     Set<ObserverInterface> observerSet = new HashSet<>();
     @Override
     public  void addObserver(ObserverInterface o){
@@ -15,9 +15,9 @@ public class EjemploObservable implements Observable {
     }
 
     @Override
-    public void notifyObservers(){
+    public void notifyObservers(Ethereum ethereum, double actualEthereumPrice){
     for (ObserverInterface observer : observerSet) {
-        observer.update();
+        observer.update(ethereum, actualEthereumPrice);
     }
     }
 

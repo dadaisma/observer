@@ -3,15 +3,27 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        EjemploObservable observable = new EjemploObservable();
-        System.out.println("\nThe Watcher says: ");
+
+        Ethereum ethereum = new Ethereum();
+        System.out.println("\nInitial start price of Ethereum is: "+ ethereum+" $");
+
+        ManagerObservable observable = new ManagerObservable();
+
+        System.out.println("\n ****** Oservable  says: BIG UPDATE! ******");
 
         observable.addObserver(new UpPriceObserver());
-        observable.addObserver(new org.example.DownPriceObserver());
-        observable.notifyObservers();
+        observable.addObserver(new DownPriceObserver());
 
-      //  System.out.println("\nThe Watcher says: ");
+        //generating random price
+        double randomChange = Math.round((Math.random() * 400 - 200) * 100) / 100.0;
+       double actualEthereumPrice= ethereum.getPriceStart() + randomChange;
+        System.out.println("Now Ethereum value has changed to: "+ actualEthereumPrice +" $");
 
-   //     observable.notifyObservers();
+
+
+        observable.notifyObservers(ethereum, actualEthereumPrice);
+
+
+
     }
 }
