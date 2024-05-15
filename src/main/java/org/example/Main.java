@@ -9,7 +9,7 @@ public class Main {
 
         ManagerObservable observable = new ManagerObservable();
 
-        System.out.println("\n ****** Oservable  says: BIG UPDATE! ******");
+        System.out.println("\n ****** Observable  says: BIG UPDATE! ******");
 
         observable.addObserver(new UpPriceObserver());
         observable.addObserver(new DownPriceObserver());
